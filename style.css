@@ -29,20 +29,20 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 64vw;
+  width: 68vw;
   overflow: hidden;
 }
 
 button.right-button {
   position: absolute;
-  right: 0;
+  right: 1.5vw;
 }
 
 button.left-button {
   position: absolute;
-  left: 0;
+  left: 1.5vw;
 }
 
 svg {
-  width: 4vw;
+  width: 3vw;
 }
