@@ -32,6 +32,8 @@ function createArrayOfAllImages(
 function createArrayOfImagesToDisplay(array, indexToDisplayInFrame) {
   const centerImage = array[indexToDisplayInFrame];
 
+  // if centerImage is at index 0, leftImageIndex becomes -1
+  // which is fine because at() can use negative index
   const leftImageIndex = indexToDisplayInFrame - 1;
   const leftImage = array.at(leftImageIndex);
 
@@ -39,6 +41,7 @@ function createArrayOfImagesToDisplay(array, indexToDisplayInFrame) {
   // then the right image should be the first image, i.e. the image at index 0
   const rightImageIndex =
     indexToDisplayInFrame + 1 >= array.length ? 0 : indexToDisplayInFrame + 1;
+  const rightImage = array[rightImageIndex];
 
-  return [leftImage, centerImage, rightImageIndex];
+  return [leftImage, centerImage, rightImage];
 }
