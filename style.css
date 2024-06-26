@@ -12,8 +12,10 @@ body {
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 32px;
 }
 
 .slides {
@@ -45,11 +47,23 @@ svg {
   width: 3vw;
 }
 
-button {
+.picture-frame button {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   position: absolute;
   opacity: 0.5;
+}
+
+.select-buttons {
+  display: flex;
+  gap: 24px;
+}
+
+.select-buttons button {
+  border: solid black 2px;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
 }
