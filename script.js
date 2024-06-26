@@ -34,8 +34,9 @@ const display = (function () {
   function getImagesToDisplay(indexToDisplayInFrame) {
     const centerImage = allImages[indexToDisplayInFrame];
 
-    // if centerImage is at index 0, leftImageIndex becomes -1
-    // which is fine because at() can use negative index
+    // if the center image is the first image,
+    // then the left image should be the last image,
+    // i.e. the image at index (allImages.length - 1)
     const leftImageIndex =
       indexToDisplayInFrame - 1 < 0
         ? allImages.length - 1
@@ -79,7 +80,6 @@ const display = (function () {
 
   function colorCurrentImageButton(index) {
     const selectButtons = document.querySelectorAll(".select-buttons button");
-    console.log(selectButtons);
     selectButtons.forEach((selectButton) => {
       if (+selectButton.dataset.index === index) {
         removeAllButtonBackground();
