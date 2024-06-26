@@ -56,3 +56,5 @@ function displayImages(indexToDisplayInFrame) {
   const slidesContainer = document.querySelector(".slides");
   imagesToDisplay.forEach((image) => slidesContainer.appendChild(image));
 }
+
+displayImages(4);
