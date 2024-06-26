@@ -83,4 +83,26 @@ const display = (function () {
       displayImages(imageToDisplayIndex);
     });
   })();
+
+  (function clickButtonForImage() {
+    const selectButtons = document.querySelectorAll(".select-buttons button");
+    let dataIndex = 0;
+    selectButtons.forEach((selectButton) => {
+      selectButton.dataset.index = dataIndex;
+      dataIndex++;
+      selectButton.addEventListener("click", () => {
+        removeAllButtonBackground();
+        selectButton.style.backgroundColor = "black";
+        const indexOfImageToDisplay = +selectButton.dataset.index;
+        displayImages(indexOfImageToDisplay);
+      });
+    });
+  })();
+
+  function removeAllButtonBackground() {
+    const selectButtons = document.querySelectorAll(".select-buttons button");
+    selectButtons.forEach((selectButton) => {
+      selectButton.style.backgroundColor = "";
+    });
+  }
 })();
