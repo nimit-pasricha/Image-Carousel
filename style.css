@@ -21,12 +21,28 @@ body {
 }
 
 img {
-  width: 33.33vw;
+  width: 56vw;
 }
 
 .picture-frame {
+  position: relative;
   display: flex;
   justify-content: center;
-  width: 40vw;
+  align-items: center;
+  width: 64vw;
   overflow: hidden;
+}
+
+button.right-button {
+  position: absolute;
+  right: 0;
+}
+
+button.left-button {
+  position: absolute;
+  left: 0;
+}
+
+svg {
+  width: 4vw;
 }
