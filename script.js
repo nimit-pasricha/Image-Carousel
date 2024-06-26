@@ -62,7 +62,7 @@ const display = (function () {
   displayImages(0);
 
   let imageToDisplayIndex = 0;
-  function goToPreviousImage() {
+  (function goToPreviousImage() {
     const leftButton = document.querySelector(".left-button");
     leftButton.addEventListener("click", () => {
       imageToDisplayIndex =
@@ -71,6 +71,16 @@ const display = (function () {
           : imageToDisplayIndex - 1;
       displayImages(imageToDisplayIndex);
     });
-  }
-  goToPreviousImage();
+  })();
+
+  (function goToNextImage() {
+    const rightButton = document.querySelector(".right-button");
+    rightButton.addEventListener("click", () => {
+      imageToDisplayIndex =
+        imageToDisplayIndex + 1 >= allImages.length
+          ? 0
+          : imageToDisplayIndex + 1;
+      displayImages(imageToDisplayIndex);
+    });
+  })();
 })();
