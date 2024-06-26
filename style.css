@@ -34,15 +34,18 @@ img {
 }
 
 button.right-button {
-  position: absolute;
   right: 1.5vw;
 }
 
 button.left-button {
-  position: absolute;
   left: 1.5vw;
 }
 
 svg {
   width: 3vw;
+}
+
+button {
+  position: absolute;
+  opacity: 0.5;
 }
