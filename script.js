@@ -54,6 +54,7 @@ const display = (function () {
     return [leftImage, centerImage, rightImage];
   }
 
+  let imageToDisplayIndex = 0;
   (function clickButtonForImage() {
     const selectButtons = document.querySelectorAll(".select-buttons button");
     let dataIndex = 0;
@@ -63,8 +64,8 @@ const display = (function () {
       selectButton.addEventListener("click", () => {
         removeAllButtonBackground();
         selectButton.style.backgroundColor = "black";
-        const indexOfImageToDisplay = +selectButton.dataset.index;
-        displayImages(indexOfImageToDisplay);
+        imageToDisplayIndex = +selectButton.dataset.index;
+        displayImages(imageToDisplayIndex);
       });
     });
   })();
@@ -95,7 +96,6 @@ const display = (function () {
     });
   }
 
-  let imageToDisplayIndex = 0;
   (function goToPreviousImage() {
     const leftButton = document.querySelector(".left-button");
     leftButton.addEventListener("click", () => {
@@ -117,4 +117,11 @@ const display = (function () {
       displayImages(imageToDisplayIndex);
     });
   })();
+
+  function clickRightArrow() {
+    const rightButton = document.querySelector(".right-button");
+    rightButton.click();
+  }
+
+  window.setInterval(clickRightArrow, 5000);
 })();
