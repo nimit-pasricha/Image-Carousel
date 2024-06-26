@@ -53,13 +53,47 @@ const display = (function () {
     return [leftImage, centerImage, rightImage];
   }
 
+  (function clickButtonForImage() {
+    const selectButtons = document.querySelectorAll(".select-buttons button");
+    let dataIndex = 0;
+    selectButtons.forEach((selectButton) => {
+      selectButton.dataset.index = dataIndex;
+      dataIndex++;
+      selectButton.addEventListener("click", () => {
+        removeAllButtonBackground();
+        selectButton.style.backgroundColor = "black";
+        const indexOfImageToDisplay = +selectButton.dataset.index;
+        displayImages(indexOfImageToDisplay);
+      });
+    });
+  })();
+
   function displayImages(indexToDisplayInFrame) {
     const imagesToDisplay = getImagesToDisplay(indexToDisplayInFrame);
     const slidesContainer = document.querySelector(".slides");
     slidesContainer.innerHTML = "";
     imagesToDisplay.forEach((image) => slidesContainer.appendChild(image));
+    colorCurrentImageButton(indexToDisplayInFrame);
   }
   displayImages(0);
+
+  function colorCurrentImageButton(index) {
+    const selectButtons = document.querySelectorAll(".select-buttons button");
+    console.log(selectButtons);
+    selectButtons.forEach((selectButton) => {
+      if (+selectButton.dataset.index === index) {
+        removeAllButtonBackground();
+        selectButton.style.backgroundColor = "black";
+      }
+    });
+  }
+
+  function removeAllButtonBackground() {
+    const selectButtons = document.querySelectorAll(".select-buttons button");
+    selectButtons.forEach((selectButton) => {
+      selectButton.style.backgroundColor = "";
+    });
+  }
 
   let imageToDisplayIndex = 0;
   (function goToPreviousImage() {
@@ -83,26 +117,4 @@ const display = (function () {
       displayImages(imageToDisplayIndex);
     });
   })();
-
-  (function clickButtonForImage() {
-    const selectButtons = document.querySelectorAll(".select-buttons button");
-    let dataIndex = 0;
-    selectButtons.forEach((selectButton) => {
-      selectButton.dataset.index = dataIndex;
-      dataIndex++;
-      selectButton.addEventListener("click", () => {
-        removeAllButtonBackground();
-        selectButton.style.backgroundColor = "black";
-        const indexOfImageToDisplay = +selectButton.dataset.index;
-        displayImages(indexOfImageToDisplay);
-      });
-    });
-  })();
-
-  function removeAllButtonBackground() {
-    const selectButtons = document.querySelectorAll(".select-buttons button");
-    selectButtons.forEach((selectButton) => {
-      selectButton.style.backgroundColor = "";
-    });
-  }
 })();
